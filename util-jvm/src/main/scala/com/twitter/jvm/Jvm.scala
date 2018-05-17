@@ -261,7 +261,7 @@ object Jvm {
   private lazy val _jvm =
     try new Hotspot
     catch {
-      case NonFatal(_) => NilJvm
+      case _: UnsatisfiedLinkError | NonFatal(_) => NilJvm
     }
 
   private val log = Logger.getLogger(getClass.getName)
